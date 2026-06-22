@@ -20,7 +20,7 @@ scikit-survival 0.23.0
 ### Prepare your data
 #### WSIs
 1. Download diagnostic WSIs from [TCGA](https://portal.gdc.cancer.gov/)
-2. Use the WSI processing tool provided by [CLAM](https://github.com/mahmoodlab/CLAM) to extract resnet-50 pretrained 1024-dim feature for each 256 $\times$ 256 patch (20x), which we then save as `.pt` files for each WSI. So, we get one `pt_files` folder storing `.pt` files for all WSIs of one study.
+2. Use the WSI processing tool provided by [CLAM](https://github.com/mahmoodlab/CLAM) to extract 512-dim feature by CONCH for each 256 $\times$ 256 patch (20x), which we then save as `.pt` files for each WSI. So, we get one `pt_files` folder storing `.pt` files for all WSIs of one study.
 
 The final structure of datasets should be as following:
 ```bash
