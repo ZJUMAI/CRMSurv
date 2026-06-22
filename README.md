@@ -1,18 +1,15 @@
-# HDMoE
-- [x] 2026-06-22 ⭐: Code release
+# CRMSurv
+- [x] 2026-06-22 ⭐: Code release !
 <summary>
-  <b>CRMSurv: A Hierarchical Decoupling-Fusion Mixture-of-Experts Framework for Multimodal Cancer Survival Prediction</b>.
+  <b>CRMSurv: Learning Compact and Risk-discriminated Multimodal Representations for Cancer Survival Analysis</b>.
   
-  <br><em>Huayi Wang, Haochao Ying, Yuyang Xu, Qiyao Zheng, jun wang, Cheng Zhang, Ying Sun, Jian Wu </em></br>
+  <br><em>Huayi Wang, Haochao Ying, Yutao Sun, Jian Wu </em></br>
 </summary>
 
 <img src="imgs/framework.png" width="1500px" align="center" />
 
 </details>
-**Summary:** Here is the official implementation of the paper "HDMoE: A Hierarchical Decoupling-Fusion Mixture-of-Experts Framework for Multimodal Cancer Survival Prediction".
-
-
-
+**Summary:** Here is the official implementation of the paper "CRMSurv: Learning Compact and Risk-discriminated Multimodal Representations for Cancer Survival Analysis".
 
 ### Pre-requisites:
 ```bash
@@ -49,19 +46,24 @@ bash run.sh
 ```
 or use the following generic command-line and specify the arguments:
 ```bash
-CUDA_VISIBLE_DEVICES=<DEVICE_ID> python main.py \
-                                      --which_splits 5foldcv \
-                                      --dataset <CANCER_TYPE> \
-                                      --data_root_dir <DATA_ROOT_DIR>\
-                                      --modal coattn \
-                                      --model hdmoe \
+CUDA_VISIBLE_DEVICES=0 python main.py --which_splits 5foldcv \
+                                      --dataset tcga_blca \
+                                      --data_root_dir root \
+                                      --modal triattn \
+                                      --model crmsurv \
                                       --num_epoch 30 \
                                       --batch_size 1 \
-                                      --loss nll_surv_cos \
                                       --lr 0.0005 \
-                                      --optimizer Adam \
+                                      --optimizer AdamW \
                                       --scheduler None \
-                                      --alpha 1.0
+                                      --alpha 1.0 \
+                                      --beta 0.1 \
+                                      --loss nll_surv_rl \
+                                      --cancer_type blca \
+                                      --cluster 8 \
+                                      --use_compression \
+                                      --use_txt \
+                                      --use_rl_loss
 ```
 
 
