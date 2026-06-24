@@ -140,9 +140,6 @@ class PrototypeBank(nn.Module):
         super().__init__()
         self.cfg = cfg
         proto = torch.zeros(cfg.num_groups, cfg.dim)
-        # proto = torch.empty(cfg.num_groups, cfg.dim)
-        # nn.init.orthogonal_(proto)
-        # proto = torch.randn(cfg.num_groups, cfg.dim)
         self.register_buffer("prototypes", l2norm(proto))
         self.register_buffer("counts", torch.zeros(cfg.num_groups))
 
@@ -157,16 +154,13 @@ class PrototypeBank(nn.Module):
         z: [B, N, D] patch/token embeddings, or [N, D].
         risk_group: [B] in [0, 1, 2, 3].
         c: [B], c=1 censored, c=0 uncensored.
-        Update pooled sample feature to prototypes:
-        - c=0: 仅更新所属 group prototype
-        - c=1: 更新所属 group 及更高 id 的所有 group prototypes
         """
         if z.ndim == 2:
             z = z.unsqueeze(0)
         if z.ndim != 3:
             raise ValueError(f"z must be [B,N,D] or [N,D], got {z.shape}")
 
-        pooled = l2norm(z.mean(dim=1))  # [B,D], 所有 patch 先 global pooling
+        pooled = l2norm(z.mean(dim=1))  
         g = risk_group.long()
         if c is None:
             c = torch.zeros_like(g, dtype=torch.float32, device=z.device)
@@ -200,17 +194,14 @@ class CrossAttentionLayer(nn.Module):
         super().__init__()
         self.norm_q = nn.LayerNorm(dim)
         self.norm_kv = nn.LayerNorm(dim)
-        # batch_first=True 确保输入格式为 [Batch, Seq_len, Dim]
         self.attn = nn.MultiheadAttention(embed_dim=dim, num_heads=heads, dropout=dropout, batch_first=True)
 
     def forward(self, query, key_value):
         q_norm = self.norm_q(query)
         kv_norm = self.norm_kv(key_value)
-        # 交叉注意力：query 去 key_value 中提取信息
         attn_output, _ = self.attn(q_norm, kv_norm, kv_norm)
-        return query + attn_output # 残差连接
+        return query + attn_output 
 
-# --- 前馈神经网络 (FFN) ---
 class FeedForward(nn.Module):
     def __init__(self, dim=512, hidden_dim=2048, dropout=0.1):
         super().__init__()
@@ -254,7 +245,6 @@ class QFormerBlock(nn.Module):
             query2_l = self.cross_attn2(query=query2, key_value=latents)
             queries = self.self_attn(torch.cat([query1_f, query2_l], dim=1))
 
-        # --- 第四步：非线性变换 (FFN) ---
         queries = self.ffn(queries)
         return queries
 
@@ -282,7 +272,7 @@ class ModalityQFormer(nn.Module):
 
 class TokenCompression(nn.Module):
     """
-    Reconstruction-aware token compression module.
+    Reconstruction-aware Patch token compression module.
     """
 
     def __init__(
