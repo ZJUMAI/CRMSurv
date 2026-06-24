@@ -15,7 +15,7 @@
 ```bash
 torch 2.3.1+cu121
 scikit-survival 0.23.0
-Python >=3.6
+Python>=3.6
 kmeans-pytorch
 numpy 1.26.4
 pandas 2.2.2
