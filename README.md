@@ -122,7 +122,7 @@ Huge thanks to the authors of following open-source projects:
 ## License & Citation 
 If you find our work useful in your research, please consider citing our paper at:
 ```bash
-@misc{wang2026crmsurv,
+@article{wang2026crmsurv,
       title={CRMSurv: Learning Compact and Risk-discriminated Multimodal Representations for Cancer Survival Analysis}, 
       author={Huayi Wang, Haochao Ying, Yutao Sun, Jian Wu},
       year={2026},
