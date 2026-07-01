@@ -87,7 +87,7 @@ CUDA_VISIBLE_DEVICES=0 python save_kmeans.py --which_splits 5foldcv \
                                       --model crmsurv \
                                       --cancer_type blca \
                                       --cluster 8 \
-                                      --save_cluster_path ./Data/WSI_kmeans_8,
+                                      --save_cluster_path ./Data/WSI_kmeans_8
 ```
 
 To train CRMSurv, you can specify the argument in the bash `main.sh` and run the command:
