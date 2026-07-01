@@ -42,7 +42,7 @@ DATA_ROOT_DIR is the base directory of cancer type (e.g. the directory to TCGA_B
 In this work, we directly use the preprocessed genomic data and signatures.csv provided by [PORPOISE](https://github.com/mahmoodlab/PORPOISE), stored in folder [csv](./csv) and [splits](./splits).
 
 #### WSI Report
-Directly use the TCGA text reports compiled in the article below, and employ the [CONCH text encoder](https://github.com/mahmoodlab/CONCH) to obtain WSI text embeddings.
+Please refer to the article below for obtaining the raw WSI report. Details regarding the refinement process of raw WSI report are provided in the appendix of our article.
 ```bash
 @article{kefeli2024tcga,
   title={TCGA-Reports: A machine-readable pathology report resource for benchmarking text-based AI models},
@@ -55,9 +55,10 @@ Directly use the TCGA text reports compiled in the article below, and employ the
 }
 
 ```
+Later, [CONCH text encoder](https://github.com/mahmoodlab/CONCH) is used to encode the WSI text.
 
 #### Genomic Report
-Please refer to the article below for the method of generating the genomic report. Details regarding the construction process can be found in the appendix of our article.
+Please refer to the article below for the method of generating the genomic report. Details regarding the construction and refinement processes of genomic report are provided in the appendix of our article.
 ```bash
 @article{huang2025survagent,
   title={SurvAgent: Hierarchical CoT-Enhanced Case Banking and Dichotomy-Based Multi-Agent System for Multimodal Survival Prediction},
