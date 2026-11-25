@@ -1,9 +1,9 @@
 # CRMSurv
-- [x] 2026-06-22 ⭐: Code release !
+- [x] 2026-11-25 ⭐: Code release !
 <summary>
-  <b>CRMSurv: Learning Compact and Risk-discriminated Multimodal Representations for Cancer Survival Analysis</b>.
+  <b>CRMSurv: Learning Compact and Risk-discriminative Multimodal Representations for Cancer Survival Analysis</b>.
   
-  <br><em>Huayi Wang, Haochao Ying, Yutao Sun, Jian Wu </em></br>
+  <br><em>Huayi Wang, Yutao Sun, Wenjie Deng, Yue Wang, Haochao Ying, Jian Wu </em></br>
 </summary>
 
 <img src="imgs/framework.png" width="1500px" align="center" />
