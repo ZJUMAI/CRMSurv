@@ -124,7 +124,7 @@ Huge thanks to the authors of following open-source projects:
 If you find our work useful in your research, please consider citing our paper at:
 ```bash
 @article{wang2026crmsurv,
-      title={CRMSurv: Learning Compact and Risk-discriminated Multimodal Representations for Cancer Survival Analysis}, 
+      title={CRMSurv: Learning Compact and Risk-discriminative Multimodal Representations for Cancer Survival Analysis}, 
       author={Huayi Wang, Yutao Sun, Wenjie Deng, Yue Wang, Haochao Ying, Jian Wu},
       year={2026},
 }
