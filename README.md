@@ -125,7 +125,7 @@ If you find our work useful in your research, please consider citing our paper a
 ```bash
 @article{wang2026crmsurv,
       title={CRMSurv: Learning Compact and Risk-discriminated Multimodal Representations for Cancer Survival Analysis}, 
-      author={Huayi Wang, Haochao Ying, Yutao Sun, Jian Wu},
+      author={Huayi Wang, Yutao Sun, Wenjie Deng, Yue Wang, Haochao Ying, Jian Wu},
       year={2026},
 }
 
